@@ -8,8 +8,9 @@
           </v-card-title>
           <v-divider class="pb-5" />
           <div class="pa-10">
-            <v-text-field v-model="email" label="email" type="text"></v-text-field>
-            <v-text-field v-model="password" label="password" type="password"></v-text-field>
+            <v-text-field v-model="email" label="email" type="text" />
+            <v-text-field v-model="password" label="password" type="password" />
+
             <v-row justify="center" class="mt-5 mb-5">
               <v-btn color="grey darken-3" @click="submit">ログイン</v-btn>
             </v-row>
@@ -43,8 +44,10 @@ export default {
     async submit() {
       if (this.authFlg) return
       const user = {
+        name: this.name,
         email: this.email,
         password: this.password,
+        confirmRegister: this.confirmRegister,
       }
       if (await this.$store.dispatch('api/users/postLogin', { data: user })) this.$router.push({ path: '/' })
     },
