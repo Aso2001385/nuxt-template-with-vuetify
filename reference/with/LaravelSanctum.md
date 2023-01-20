@@ -11,9 +11,9 @@
 
 store(共通変数)に認証情報を格納して利用します。
 
-- api/verify/auth.js
+- api/verify
   - メール認証を前提とした store です。
-- api/nomal/auth.js
+- api/standard
   - メール認証を使用しない store です。
 
 ### 認証を行うページ
@@ -22,5 +22,5 @@ store(共通変数)に認証情報を格納して利用します。
 
 - verify/~
   - メール認証を前提としたルートです。
-- normal/~
+- standard/~
   - メール認証を使用しないルートです。
