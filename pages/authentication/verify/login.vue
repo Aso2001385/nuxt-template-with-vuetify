@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      authFlg: 'api/standard/authFlg',
+      authFlg: 'api/verify/authFlg',
     }),
   },
   created() {

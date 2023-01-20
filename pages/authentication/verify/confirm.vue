@@ -1,12 +1,12 @@
 <template>
   <v-container fill-height>
     <v-row justify="center">
-      <v-col cols="12" lg="5" md="6" sm="10" xs="10">
+      <v-col cols="12" lg="6" md="6" sm="7" xs="10">
         <v-card class="pb-10 mx-auto fill-width">
           <v-card-title class="d-flex justify-center pa-4 grey darken-3">
             <h3 class="text-center white--text">Verify Email Confirmation</h3>
           </v-card-title>
-          <v-divider class="pb-5"> </v-divider>
+          <v-divider class="pb-5" />
           <div class="pa-10">
             <p>verify code</p>
             <v-otp-input v-model="code" :length="6" type="number" />
