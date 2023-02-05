@@ -40,7 +40,7 @@ export const actions = {
       .get(`${BASE_URL}/sanctum/csrf-cookie`)
       .then(async () => {
         return await axios
-          .post(`${API_URL}/users`, argument.data)
+          .post(`${API_URL}/auth/verifies`, argument.data)
           .then(response => {
             commit('setTempMail', response.data)
             return true
@@ -60,7 +60,7 @@ export const actions = {
       .get(`${BASE_URL}/sanctum/csrf-cookie`)
       .then(async () => {
         return await axios
-          .post(`${API_URL}/verifications`, argument.data)
+          .put(`${API_URL}/auth/verifies/${argument.email}`, argument.data)
           .then(response => {
             commit('setAuth', response.data)
             return true
@@ -77,7 +77,7 @@ export const actions = {
   // 認証コード再送リクエスト
   codeReSendRequest: async ({ commit }, argument) => {
     return await axios
-      .get(`${API_URL}/verifications/${argument.email}`)
+      .get(`${API_URL}/auth/verifies/${argument.email}`)
       .then(() => {
         return true
       })
@@ -92,7 +92,7 @@ export const actions = {
       .get(`${BASE_URL}/sanctum/csrf-cookie`)
       .then(async () => {
         return await axios
-          .post(`${BASE_URL}/login`, argument.data)
+          .post(`${BASE_URL}/auth/verifies/login`, argument.data)
           .then(response => {
             commit('setAuth', response.data)
             return true

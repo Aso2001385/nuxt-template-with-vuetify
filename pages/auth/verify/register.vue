@@ -8,15 +8,18 @@
           </v-card-title>
           <v-divider class="pb-5" />
           <div class="pa-10">
-            <v-text-field v-model="name" label="name" type="text" />
-            <v-text-field v-model="email" label="email" type="text" />
-            <v-text-field v-model="password" label="password" type="password" />
-            <v-text-field v-model="confirmPassword" label="confirm password" type="password" />
+            <v-text-field v-model="name" label="Name" type="text" />
+            <v-text-field v-model="email" label="Email" type="text" />
+            <v-text-field v-model="password" label="Password" type="password" />
+            <v-text-field v-model="confirmPassword" label="Confirm Password" type="password" />
             <v-row justify="center" class="mt-5 mb-5">
-              <v-btn color="grey darken-3" @click="submit">ログイン</v-btn>
+              <v-btn color="grey darken-3 white--text" @click="register">認証コードを取得</v-btn>
             </v-row>
             <v-row class="mt-10" justify="center">
-              <NuxtLink to="/account/signup">サインアップページへ</NuxtLink>
+              <NuxtLink to="/auth/verify/login">ログインページへ</NuxtLink>
+            </v-row>
+            <v-row class="mt-10" justify="center">
+              <NuxtLink to="/auth/verify">戻る</NuxtLink>
             </v-row>
           </div>
         </v-card>
@@ -44,8 +47,9 @@ export default {
     if (this.authFlg) alert('ログイン済みです')
   },
   methods: {
-    async submit() {
+    async register() {
       if (this.authFlg) return
+
       const user = {
         name: this.name,
         email: this.email,

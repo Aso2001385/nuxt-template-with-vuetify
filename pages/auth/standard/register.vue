@@ -13,10 +13,10 @@
             <v-text-field v-model="password" label="password" type="password" />
             <v-text-field v-model="confirmPassword" label="confirm password" type="password" />
             <v-row justify="center" class="mt-5 mb-5">
-              <v-btn color="grey darken-3" @click="submit">ログイン</v-btn>
+              <v-btn color="grey darken-3 white--text" @click="register">登録</v-btn>
             </v-row>
             <v-row class="mt-10" justify="center">
-              <NuxtLink to="/account/signup">サインアップページへ</NuxtLink>
+              <NuxtLink to="/auth/standard/login">ログインページへ</NuxtLink>
             </v-row>
           </div>
         </v-card>
@@ -37,6 +37,7 @@ export default {
   },
   computed: {
     ...mapGetters({
+      auth: 'api/standard/auth',
       authFlg: 'api/standard/authFlg',
     }),
   },
@@ -44,7 +45,7 @@ export default {
     if (this.authFlg) alert('ログイン済みです')
   },
   methods: {
-    async submit() {
+    async register() {
       if (this.authFlg) return
       const user = {
         name: this.name,
@@ -52,7 +53,7 @@ export default {
         password: this.password,
         confirm_password: this.confirmPassword,
       }
-      if (await this.$store.dispatch('api/users/postLogin', { data: user })) this.$router.push({ path: '/' })
+      if (await this.$store.dispatch('api/standard/register', { data: user })) this.$router.push({ path: '/' })
     },
   },
 }

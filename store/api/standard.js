@@ -27,15 +27,15 @@ export const mutations = {
 }
 
 export const actions = {
-  // 仮登録(ユーザー情報送信)
+  // 登録
   register: async ({ commit }, argument) => {
     return await axios
       .get(`${BASE_URL}/sanctum/csrf-cookie`)
       .then(async () => {
         return await axios
-          .post(`${API_URL}/users`, argument.data)
+          .post(`${API_URL}/auth/standards`, argument.data)
           .then(response => {
-            commit('setTempMail', response.data)
+            commit('setTempMail', response.data.email)
             return true
           })
           .catch(() => {
@@ -53,7 +53,7 @@ export const actions = {
       .get(`${BASE_URL}/sanctum/csrf-cookie`)
       .then(async () => {
         return await axios
-          .post(`${BASE_URL}/login`, argument.data)
+          .post(`${BASE_URL}/auth/standards/login`, argument.data)
           .then(response => {
             commit('setAuth', response.data)
             return true
